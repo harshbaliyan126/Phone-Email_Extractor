@@ -1,6 +1,4 @@
 #! python3
-# phoneAndEmail.py - Finds phone numbers and email addresses on the clipboard.
-
 import pyperclip, re
 
 phoneregex = re.compile(r'''(
@@ -12,7 +10,6 @@ phoneregex = re.compile(r'''(
         (\s*(ext|x|ext.)\s*(\d{2,5}))? # extension
         )''',re.VERBOSE)
 
-# TODO: create email regex
 
 emailregex = re.compile(r'''(
     [a-zA-Z0-9._%+-]+   # username
@@ -20,8 +17,6 @@ emailregex = re.compile(r'''(
     [a-zA-Z0-9.-]+      # domain name
     \.[a-zA-Z]{2,4}   # dot-something
     )''', re.VERBOSE)
-
-# TODO: Find matches in clipboard text
 
 text = str(pyperclip.paste())
 matches = []
@@ -34,7 +29,6 @@ for groups in emailregex.findall(text):
     matches.append(groups)
 
 
-# TODO: Copy results to the clipboard
 
 if len(matches) > 0:
     pyperclip.copy('\n'.join(matches))
